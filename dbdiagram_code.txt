@@ -1,0 +1,37 @@
+table teams as t {
+  TEAM_ID int [pk]
+  MIN_YEAR year 
+  MAX_YEAR year
+  ABBREVIATION varchar
+  NICKNAME varchar
+  YEARFOUNDED year
+  CITY varchar
+  ARENA varchar
+  ARENACAPACITY int
+  OWNER varchar
+  GENERALMANAGER varchar
+  HEADCOACH varchar
+  DLEAGUEAFFILIATION varchar
+}
+
+table rankings as rt {
+  TEAM_ID int [pk]
+  SEASON_ID int 
+  STANDINGSDATE date
+  CONFERENCE varchar
+  TEAM varchar
+  G int
+  W int
+  L int
+  W_PCT float8
+  HOME_RECORD varchar
+  ROAD_RECORD varchar
+  RETURNTOPLAY int
+}
+
+table players as p {
+  PLAYER_NAME varchar
+  TEAM_ID int
+  PLAYER_ID int
+  SEASON year
+}
