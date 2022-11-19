@@ -1,10 +1,10 @@
 table teams as t {
   TEAM_ID int [pk]
-  MIN_YEAR year 
-  MAX_YEAR year
+  MIN_YEAR date
+  MAX_YEAR date
   ABBREVIATION varchar
   NICKNAME varchar
-  YEARFOUNDED year
+  YEARFOUNDED date
   CITY varchar
   ARENA varchar
   ARENACAPACITY int
@@ -32,6 +32,30 @@ table rankings as rt {
 table players as p {
   PLAYER_NAME varchar
   TEAM_ID int
-  PLAYER_ID int
-  SEASON year
+  PLAYER_ID int [pk]
+  SEASON date
+}
+
+table games as g {
+  GAME_DATE_EST date
+  GAME_ID int [pk]
+  GAME_STATUS_TEXT varchar(10)
+  HOME_TEAM_ID int
+  VISITOR_TEAM_ID int
+  SEASON date
+  TEAM_ID_home int
+  PTS_home int
+  FG_PCT_home float
+  FT_PCT_home float
+  FG3_PCT_home float
+  AST_home int
+  REB_home int
+  TEAM_ID_away int
+  PTS_away int
+  FG_PCT_away float
+  FT_PCT_away float
+  FG3_PCT_away float
+  AST_away int
+  REB_away int
+  HOME_TEAM_WINS int
 }
