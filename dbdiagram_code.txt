@@ -15,8 +15,8 @@ table teams as t {
 }
 
 table rankings as rt {
-  TEAM_ID int [pk]
-  SEASON_ID int 
+  TEAM_ID int [ref: - t.TEAM_ID]
+  SEASON_ID int [pk]
   STANDINGSDATE date
   CONFERENCE varchar
   TEAM varchar
@@ -31,7 +31,7 @@ table rankings as rt {
 
 table players as p {
   PLAYER_NAME varchar
-  TEAM_ID int
+  TEAM_ID int [ref: - t.TEAM_ID]
   PLAYER_ID int [pk]
   SEASON date
 }
@@ -59,3 +59,39 @@ table games as g {
   REB_away int
   HOME_TEAM_WINS int
 }
+
+table game_detail as d {
+  GAME_ID int
+  TEAM_ID int [ref: > t.TEAM_ID]
+  TEAM_ABBREVIATION varchar(5)
+  TEAM_CITY varchar(20)
+  PLAYER_ID int [ref: > p.PLAYER_ID]
+  PLAYER_NAME varchar(50)
+  NICKNAME varchar(50)
+  START_POSITION char
+  COMMENT varchar(50)
+  MIN varchar(5)
+  FGM float
+  FGA float
+  FG_PCT float
+  FG3M float
+  FG3A float
+  FG3_PCT float
+  FTM float
+  FTA float
+  FT_PCT float
+  OREB float
+  DREB float
+  REB float
+  AST float
+  STL float
+  BLK float
+  TO float
+  PF float
+  PTS float
+  PLUS_MINUS float
+}
+
+// Creating references
+// You can also define relaionship separately
+// > many-to-one; < one-to-many; - one-to-one; <> many-to-many
